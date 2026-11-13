@@ -30,9 +30,11 @@ export default function HomeScreen({ navigation }) {
     <ScreenContainer>
       <Card style={styles.welcome}>
         <Text style={[styles.hello, { color: colors.text }]}>Hello, {name}</Text>
-        <Text style={{ color: colors.muted }}>Theme: {mode}. Pick a lab to open.</Text>
+        <Text style={{ color: colors.muted }}> BSCS 4A</Text>
       </Card>
-
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+        Activities
+        </Text>
       <View style={styles.grid}>
         {labs.map((lab) => (
           <LabTile key={lab.id} lab={lab} onPress={() => navigation.navigate(lab.screen)} />
@@ -44,6 +46,12 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   welcome: { marginBottom: 16 },
   hello: { fontSize: 24, fontWeight: '700', marginBottom: 4 },
+  sectionTitle: {
+  fontSize: 18,
+  fontWeight: '400',
+  marginBottom: 12,
+  paddingLeft: 4,
+},
   settingsButton: { width: 50, height: 40, alignItems: 'center', justifyContent: 'center' },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12, justifyContent: 'space-between', marginBottom: 20 },
 });
