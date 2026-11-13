@@ -1,4 +1,4 @@
-# Lab Compendium
+# Lab Compiler
 ```
 npm install
 npx expo start
