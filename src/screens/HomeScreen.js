@@ -41,6 +41,7 @@ export default function HomeScreen({ navigation }) {
             if (!lab.screen) return;
             logActivity(`Opened ${lab.title}`);
             navigation.navigate(lab.screen);
+
           }} />
         ))}
       </View>
@@ -68,12 +69,13 @@ const styles = StyleSheet.create({
   activityCard: { marginBottom: 24, gap: 12 },
   activityRow: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingTop: 4 },
   activityDot: { width: 8, height: 8, borderRadius: 4 },
+  activityline: { height: 2, backgroundColor: '#D5DDD8', marginVertical: 4 },
   activityCopy: { flex: 1, gap: 3 },
-  activityTitle: { fontWeight: '600', fontSize: 15 },
-  hello: { fontSize: 24, fontWeight: '700', marginBottom: 4 },
+  activityTitle: { fontWeight: '300', fontSize: 13 },
+  hello: { fontSize: 22, fontWeight: '500', marginBottom: 4 },
   sectionTitle: {
   fontSize: 18,
-  fontWeight: '400',
+  fontWeight: '300',
   marginBottom: 12,
   paddingLeft: 4,
 },

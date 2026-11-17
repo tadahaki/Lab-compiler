@@ -45,7 +45,7 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   card: { marginBottom: 12 },
   row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  label: { fontSize: 16, fontWeight: '600', marginBottom: 8 },
+  label: { fontSize: 16, fontWeight: '400', marginBottom: 8 },
   input: { borderWidth: 1, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 10, fontSize: 16 },
   saveButton: { marginTop: 12, alignSelf: 'flex-end', width: 80},
 });
