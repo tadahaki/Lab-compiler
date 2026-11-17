@@ -7,7 +7,7 @@ import { useApp } from '../context/AppContext';
 
 // Local, screen-specific state with useState + useEffect.
 export default function CounterScreen({ navigation }) {
-  const { colors } = useApp();
+  const { colors, logActivity } = useApp();
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -19,10 +19,10 @@ export default function CounterScreen({ navigation }) {
       <Card style={styles.center}>
         <Text style={[styles.count, { color: colors.accent }]}>{count}</Text>
         <View style={styles.row}>
-          <AppButton label="-1" variant="outline" onPress={() => setCount((c) => c - 1)} style={styles.btn} />
-          <AppButton label="+1" onPress={() => setCount((c) => c + 1)} style={styles.btn} />
+          <AppButton label="-1" variant="outline" onPress={() => { setCount((c) => c - 1); logActivity('Decreased the Lab 1 counter'); }} style={styles.btn} />
+          <AppButton label="+1" onPress={() => { setCount((c) => c + 1); logActivity('Increased the Lab 1 counter'); }} style={styles.btn} />
         </View>
-        <AppButton label="Reset" variant="outline" onPress={() => setCount(0)} style={{ alignSelf: 'stretch' }} />
+        <AppButton label="Reset" variant="outline" onPress={() => { setCount(0); logActivity('Reset the Lab 1 counter'); }} style={{ alignSelf: 'stretch' }} />
       </Card>
     </ScreenContainer>
   );

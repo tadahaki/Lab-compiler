@@ -7,15 +7,27 @@ const AppContext = createContext(null);
 export function AppProvider({ children }) {
   const [mode, setMode] = useState('light');
   const [name, setName] = useState('Student');
+  const [recentActivities, setRecentActivities] = useState([]);
+
+  const logActivity = (message) => setRecentActivities((items) => [
+    { id: `${Date.now()}-${Math.random()}`, message, createdAt: new Date().toISOString() },
+    ...items,
+  ].slice(0, 20));
 
   const value = useMemo(() => ({
     mode,
     isDark: mode === 'dark',
     colors: palettes[mode],
-    toggleTheme: () => setMode((m) => (m === 'light' ? 'dark' : 'light')),
+    toggleTheme: () => setMode((m) => {
+      const nextMode = m === 'light' ? 'dark' : 'light';
+      logActivity(`Switched to ${nextMode} theme`);
+      return nextMode;
+    }),
     name,
     setName,
-  }), [mode, name]);
+    recentActivities,
+    logActivity,
+  }), [mode, name, recentActivities]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
