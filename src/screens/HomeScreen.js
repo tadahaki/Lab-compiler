@@ -8,7 +8,7 @@ import { useApp } from '../context/AppContext';
 import { labs } from '../data/labs';
 
 export default function HomeScreen({ navigation }) {
-  const { colors, name, recentActivities } = useApp();
+  const { colors, name, recentActivities, logActivity } = useApp();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -37,7 +37,11 @@ export default function HomeScreen({ navigation }) {
         </Text>
       <View style={styles.grid}>
         {labs.map((lab) => (
-          <LabTile key={lab.id} lab={lab} onPress={() => navigation.navigate(lab.screen)} />
+          <LabTile key={lab.id} lab={lab} onPress={() => {
+            if (!lab.screen) return;
+            logActivity(`Opened ${lab.title}`);
+            navigation.navigate(lab.screen);
+          }} />
         ))}
       </View>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>Recent activity</Text>
